@@ -6,9 +6,8 @@
 package com.concretepage.framework.service;
 
 /**
- *
  * @author fcortez
  */
 public interface IBaseService {
-    
+
 }

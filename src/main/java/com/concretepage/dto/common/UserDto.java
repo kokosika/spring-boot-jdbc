@@ -8,13 +8,12 @@ package com.concretepage.dto.common;
 import com.concretepage.framework.dto.BaseDto;
 
 /**
- *
  * @author fcortez
  */
-public class UserDto extends BaseDto{
-    
+public class UserDto extends BaseDto {
+
     private String userName;
     private String password;
     private int typeUser;
-    
+
 }

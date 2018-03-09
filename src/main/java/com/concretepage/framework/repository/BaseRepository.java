@@ -5,9 +5,6 @@
  */
 package com.concretepage.framework.repository;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
@@ -16,64 +13,116 @@ import org.springframework.jdbc.core.simple.SimpleJdbcCall;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+
 /**
- *
  * @author fcortez
  */
 @Repository
 @Transactional
 @EnableAutoConfiguration
-public class BaseRepository implements IBaseRepository{
-    
+public class BaseRepository implements IBaseRepository {
+
     @Autowired
     protected JdbcTemplate jdbcTemplate;
-    
+
     /**
-     * 
      * @param pojo maping export
-     * @param sp name sp
-     * @return  list pojo class
+     * @param sp   name sp
+     * @return list pojo class
      */
-    public List<? extends Object> executeList( Class pojo , String sp ){
+    public List<? extends Object> executeList(Class pojo, String sp) {
         SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
                 .withProcedureName(sp)
-                .returningResultSet("data", new BeanPropertyRowMapper<>(pojo));
+                .returningResultSet(DATA, new BeanPropertyRowMapper<>(pojo));
         Map m = call.execute(new HashMap<>(0));
-        return (List<Object>) m.get("data");
+        System.out.println(m);
+        return (List<Object>) m.get(DATA);
     }
-    
+
     /**
-     * 
      * @param pojo maping export
-     * @param sp name sp
+     * @param sp   name sp
+     * @return list pojo class
+     */
+    public List<? extends Object> executeList(Class pojo, String catalog, String sp) {
+        SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
+                .withProcedureName(sp)
+                .withCatalogName(catalog)
+                .returningResultSet(DATA, new BeanPropertyRowMapper<>(pojo));
+        Map m = call.execute(new HashMap<>(0));
+        System.out.println(m);
+        return (List<Object>) m.get(DATA);
+    }
+
+    /**
+     * @param pojo  maping export
+     * @param sp    name sp
      * @param param parameters
      * @return list pojo class
      */
-    public List<? extends Object> executeList( Class pojo , String sp , HashMap<String, Object> param ){
+    public List<? extends Object> executeList(Class pojo, String sp, HashMap<String, Object> param) {
         SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
                 .withProcedureName(sp)
-                .returningResultSet("data", new BeanPropertyRowMapper<>(pojo)); 
-        return (List<Object>) call.execute(param).get("data");
+                .returningResultSet(DATA, new BeanPropertyRowMapper<>(pojo));
+        return (List<Object>) call.execute(param).get(DATA);
     }
-    
+
     /**
-     * 
-     * @param sp 
+     *
+     * @param pojo
+     * @param catalog
+     * @param sp
+     * @param param
+     * @return
      */
-    public void execute(String sp){
+    public List<? extends Object> executeList(Class pojo, String catalog, String sp, HashMap<String, Object> param) {
+        SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
+                .withProcedureName(sp)
+                .withCatalogName(catalog)
+                .returningResultSet(DATA, new BeanPropertyRowMapper<>(pojo));
+        return (List<Object>) call.execute(param).get(DATA);
+    }
+
+    /**
+     * @param sp
+     */
+    public void execute(String sp) {
         SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
                 .withProcedureName(sp);
         call.execute(new HashMap<>());
     }
-    
+
     /**
-     * 
-     * @param sp 
-     * @param param 
+     * @param sp
      */
-    public void execute(String sp ,  HashMap<String, Object> param){
+    public void execute(String catalog, String sp) {
+        SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
+                .withProcedureName(sp)
+                .withCatalogName(catalog);
+        call.execute(new HashMap<>());
+    }
+
+    /**
+     * @param sp
+     * @param param
+     */
+    public void execute(String sp, HashMap<String, Object> param) {
         SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
                 .withProcedureName(sp);
+        call.execute(param);
+    }
+
+    /**
+     * @param sp
+     * @param param
+     */
+    public void execute(String catalog, String sp, HashMap<String, Object> param) {
+        SimpleJdbcCall call = new SimpleJdbcCall(this.jdbcTemplate)
+                .withProcedureName(sp)
+                .withCatalogName(catalog);
         call.execute(param);
     }
 }

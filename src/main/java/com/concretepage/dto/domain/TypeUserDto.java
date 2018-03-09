@@ -8,9 +8,8 @@ package com.concretepage.dto.domain;
 import com.concretepage.framework.dto.BaseDomainDto;
 
 /**
- *
  * @author fcortez
  */
-public class TypeUserDto extends BaseDomainDto{
-    
+public class TypeUserDto extends BaseDomainDto {
+
 }

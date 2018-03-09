@@ -8,10 +8,9 @@ package com.concretepage.framework.service;
 import org.springframework.stereotype.Service;
 
 /**
- *
  * @author fcortez
  */
 @Service
-public class BaseService extends BaseResponseService implements IBaseService{
-    
+public class BaseService extends BaseResponseService implements IBaseService {
+
 }

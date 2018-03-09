@@ -5,12 +5,9 @@
  */
 package com.concretepage.framework.repository;
 
-import java.util.List;
-
 /**
- *
  * @author fcortez
  */
-public interface IBaseRepository {   
-      
+public interface IBaseRepository {
+    final String DATA = "VCUR";
 }

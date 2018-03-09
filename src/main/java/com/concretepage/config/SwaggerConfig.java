@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package com.concretepage.config;
-import java.util.Collections;
+
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import springfox.documentation.builders.PathSelectors;
@@ -15,8 +15,9 @@ import springfox.documentation.spi.DocumentationType;
 import springfox.documentation.spring.web.plugins.Docket;
 import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
+import java.util.Collections;
+
 /**
- *
  * @author fcortez
  */
 @Configuration
@@ -31,6 +32,7 @@ public class SwaggerConfig {
                 .build()
                 .apiInfo(this.apiInfo());
     }
+
     private ApiInfo apiInfo() {
         return new ApiInfo(
                 "Api rest para control de inventario y ventas",

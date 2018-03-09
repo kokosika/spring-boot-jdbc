@@ -6,9 +6,8 @@
 package com.concretepage.framework.api;
 
 /**
- *
  * @author fcortez
  */
 public class BaseApiRest {
-    
+
 }

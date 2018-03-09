@@ -6,11 +6,10 @@
 package com.concretepage.framework.dto;
 
 /**
- *
  * @author fcortez
  */
-public class BaseDomainDto extends BaseDto{
-    
+public class BaseDomainDto extends BaseDto {
+
     private String name;
     private String description;
 
@@ -29,7 +28,6 @@ public class BaseDomainDto extends BaseDto{
     public void setDescription(String description) {
         this.description = description;
     }
-    
-    
-    
+
+
 }

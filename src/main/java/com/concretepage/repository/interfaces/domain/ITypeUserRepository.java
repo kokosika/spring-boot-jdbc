@@ -7,20 +7,38 @@ package com.concretepage.repository.interfaces.domain;
 
 import com.concretepage.dto.domain.TypeUserDto;
 import com.concretepage.framework.repository.IBaseRepository;
+
 import java.util.List;
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
- *
  * @author fcortez
  */
 
 public interface ITypeUserRepository extends IBaseRepository {
     /**
-     * 
-     * @return 
+     * @return
      */
     public List<TypeUserDto> findAll();
+
+    /**
+     * @return
+     */
+    public TypeUserDto findByKey(int id);
+
+    /**
+     * @param dto
+     */
+    public void update(TypeUserDto dto);
+
+    /**
+     * @param dto
+     */
+    public void insert(TypeUserDto dto);
+
+    /**
+     * @param id
+     */
+    public void delete(int id);
+
 }
+

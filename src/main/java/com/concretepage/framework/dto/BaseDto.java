@@ -9,11 +9,10 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- *
  * @author fcortez
  */
 public class BaseDto implements Serializable {
-    
+
     private int id;
     private Date stateCreate;
     private Date stateLastUpdate;
@@ -41,7 +40,6 @@ public class BaseDto implements Serializable {
     public void setStateLastUpdate(Date stateLastUpdate) {
         this.stateLastUpdate = stateLastUpdate;
     }
-    
-    
-    
+
+
 }

@@ -5,17 +5,15 @@
  */
 package com.concretepage.framework.entity;
 
+import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-import java.util.logging.Logger;
-import javax.persistence.*;
 
 /**
- *
  * @author fcortez
  */
 @MappedSuperclass
-public class BaseEntity implements Serializable{
+public class BaseEntity implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
@@ -47,8 +45,6 @@ public class BaseEntity implements Serializable{
     public void setStateLastUpdate(Date stateLastUpdate) {
         this.stateLastUpdate = stateLastUpdate;
     }
-    
-    
-    
-    
+
+
 }

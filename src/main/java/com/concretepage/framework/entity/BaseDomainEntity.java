@@ -5,16 +5,16 @@
  */
 package com.concretepage.framework.entity;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.MappedSuperclass;
 
 /**
- *
  * @author fcortez
  */
 @MappedSuperclass
-public class BaseDomainEntity extends BaseEntity{
-    
-    @Column(length = 50,nullable = false)
+public class BaseDomainEntity extends BaseEntity {
+
+    @Column(length = 50, nullable = false)
     private String name;
     @Column(length = 100)
     private String description;
